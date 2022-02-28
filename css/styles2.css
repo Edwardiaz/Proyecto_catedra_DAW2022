@@ -10441,7 +10441,7 @@ button:hover{
   border: 1px solid #8f099d;
   box-shadow: 0 0 5px #ff2073,
               0 0 10px #ff2073,
-              0 0 15px #ff2073),
+              0 0 15px #ff2073,
               0 2px 0 black;
 }
 .link{
@@ -10457,7 +10457,7 @@ button:hover{
 }
 
 div.container3{
-  background: url("../assets/img/4.jpg");
+  background: url("../imagenes/background.jpg");
   padding: 50px;
   margin-top: 0px;
   height: 590px;
