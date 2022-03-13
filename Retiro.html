@@ -31,56 +31,45 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="page2.html"><b>Pagina 2</b></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="page2.html"><b>RETIRO</b></a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects"><b></b></a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html"><b>Salir</b></a></li>
+                    
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html"><b>Regresar</b></a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <section id="info">
-        <div class="d">
-            <h4>Servicios</h3>
-        </div><br>
+        <h4>RETIRO</h4>
+        <p>Seleccione el monto que desea retirar.</p>
+
         <div class="contenedor">
-            <div class="info-es">
-                <img src="imagenes/pokeball_01.png" alt="">
-                <h4>Deposito</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_02.png" alt="">
-                <h4>Retiro</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_03.png" alt="">
-                <h4>Consulta de saldo</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_04.png" alt="">
-                <h4>Pago de agua potable</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_05.png" alt="">
-                <h4>Pago de energía electrica</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_06.png" alt="">
-                <h4>Pago de Internet</h4>
-                <h5></h5>
-            </div>
-            <div class="info-es">
-                <img src="imagenes/pokeball_07.png" alt="">
-                <h4>Pago de telefonía</h4>
-                <h5></h5>
-            </div>
+            <form id="form1">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="nic">N° de Cuenta</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="Monto" placeholder="Digite su numero de cuenta">
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
+        <div class="contenedor">
+            <form id="form1">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="nic">Monto</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="Monto" placeholder="Ingrese Monto a Retirar">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="btn success">Aceptar</button>
+        <button class="btn success">Cancelar</button>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
