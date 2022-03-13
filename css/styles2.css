@@ -396,7 +396,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #e83e8c;
+  color: #0c5460;
   word-wrap: break-word;
 }
 a > code {
@@ -8469,7 +8469,7 @@ body {
 
 #mainNav {
   min-height: 3.5rem;
-  background-color: #7611cb;
+  background-color: #224B5B;
 }
 #mainNav .navbar-toggler {
   font-size: 80%;

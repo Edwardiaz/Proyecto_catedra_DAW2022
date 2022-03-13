@@ -63,7 +63,7 @@ small {
 }
 
 a {
-  color: #64a19d;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
 }
@@ -3186,7 +3186,7 @@ body{
 }
 .text{
   font-size: 30px;
-  color: #c7c7c7;
+  color: #fff;
   font-weight: 600;
   letter-spacing: 2px;
 }
