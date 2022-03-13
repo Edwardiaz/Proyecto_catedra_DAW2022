@@ -33,6 +33,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="page2.html"><b>DEPOSITO</b></a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects"><b></b></a></li>
+                    
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html"><b>Regresar</b></a></li>
                 </ul>
             </div>
@@ -40,15 +41,35 @@
     </nav>
 
     <section id="info">
-        <div class="d">
-            <h4>DEPOSITO</h3>
-        </div><br>
+        <h4>DEPOSITO</h4>
+        <p>Seleccione el monto que desea depositar.</p>
+
         <div class="contenedor">
-                <img src="imagenes/Pokedex Sin Datos.png" widtg="500" height="500" alt="">
-                <h5></h5>
-            </div>
+            <form id="form1">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="nic">N° de Cuenta</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="Monto" placeholder="Digite su numero de cuenta">
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
+        <div class="contenedor">
+            <form id="form1">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="nic">Monto</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="Monto" placeholder="Ingrese Monto a Depositar">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="btn success">Aceptar</button>
+        <button class="btn success">Cancelar</button>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
