@@ -8519,7 +8519,7 @@ body {
   }
   #mainNav.navbar-shrink {
   background: rgb(88,9,113);
-background: linear-gradient(94deg, rgba(88,9,113,0.6867121848739496) 0%, rgba(245,0,215,0.3) 100%); }
+  background: #224B5B}
   #mainNav.navbar-shrink .navbar-brand {
     color: #000000;
   }
