@@ -53,18 +53,26 @@
                     <h1 class="mx-auto my-0 text-uppercase">Bienvenidos</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
                 </div>
-                <form>
+                <form target="_blank" action="index.html" method="POST">
                     <div class="field">
-
-                        <input type="password" placeholder="Password" id="clave">
-
+                        <input type="text" required="true" placeholder="Ingrese un usuario">
+                    </div>
+                    <br>
+                    <div class="field">
+                        <input type="password" required="true" placeholder="Ingrese la contraseña" maxlength="4">
                     </div>
                     <div>
-                        <button class="btn btn-primary mx-auto" type="submit"><a href="index.html"
-                                class="texx">Acceder</a></button>
+                        <button class="btn btn-primary mx-auto" type="submit">Acceder</button>
+                        <div class="row">
+                            <div id="check">
+                                <input type="checkbox" checked="checked">
+                            </div>
+                            <div>
+                                <h6 id="recuerdame">Recuerdame</h6>
+                            </div>
+                        </div>
+                        <span class="psw"><a href="#">¿Olvidaste la contraseña?</a></span>
                     </div>
-
-
                 </form>
 
                 <!-- nucleo Bootstrap JS-->
@@ -72,7 +80,6 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
                 <!--plugin js de terceros-->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-                <!--Tema core del js-->
                 <script src="js/scripts.js"></script>
                 <script src="js/jquery-3.6.0.min.js"></script>
                 <script src="js/Login.js"></script>
