@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html"><b>Regresar</b></a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.html"><b>Terminar sesion</b></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.html"><b>Cerrar sesión</b></a></li>
                 </ul>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         <label for="nic">NIC</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="fname" name="nic" placeholder="INGRESE NIC">
+                        <input type="text" id="nic" name="nic" placeholder="INGRESE NIC">
                     </div>
                 </div>
                 <div class="row">
@@ -74,12 +74,11 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="cuentaOrigen">N° Tarjeta</label>
+                        <label for="cuentaOrigen">Cuenta origen de fondos</label>
                     </div>
                     <div class="col-75">
                         <select id="cuentaOrigen" name="cuentaOrigen">
-                            <option value="N01">25352514251425</option>
-                            <option value="N02">456854126545</option>
+                            <option value="N01">0987654321</option>
                         </select>
                     </div>
                 </div>
@@ -88,6 +87,9 @@
                     </div>
                     <div class="col-6 ">
                         <input type="submit" value="Enviar">
+                    </div>
+                    <div class="col-6 ">
+                        <button class="btn success" onclick="clickMe();">Descargar comprobante</button>
                     </div>
                 </div>
             </form>
