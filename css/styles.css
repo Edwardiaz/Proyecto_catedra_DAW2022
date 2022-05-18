@@ -2981,14 +2981,6 @@ button{
   cursor: pointer;
 }
 
-
-div.container3{
-  background: url("../assets/img/4.jpg");
-  padding: 50px;
-  margin-top: 0px;
-  height: 590px;
-}
-
 @media (max-width: 580px) {
   .login-form{
     width: 100%;
