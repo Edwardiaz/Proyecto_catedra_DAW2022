@@ -5,6 +5,10 @@ function go(){
         document.form.submit();
     }
     else{
-        alert("Porfavor ingrese, nombre de usuario y contraseña correctos.");
+        Swal.fire({
+            icon: 'error',
+            title: 'oops!!!',
+            text: 'Usuario o Contraseña Incorrectos'
+        })
     }
 }
