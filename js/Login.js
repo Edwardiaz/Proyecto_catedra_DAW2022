@@ -1,8 +1,14 @@
 //Control de Login
 
-function Verificar(){
-    let $('#clave').value;
-    if (clave.length = 1234){
-        alert('La clave ingresada es incorrecta');
+function go(){
+    if (document.form.password.value=='1234' && document.form.login.value=='Ash Ketchum'){
+        document.form.submit();
+    }
+    else{
+        Swal.fire({
+            icon: 'error',
+            title: 'oops!!!',
+            text: 'Usuario o Contraseña Incorrectos'
+        })
     }
 }
