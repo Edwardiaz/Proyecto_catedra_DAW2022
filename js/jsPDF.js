@@ -15,14 +15,15 @@ function descargar( opcion ){
             doc.text("-------------------------------------------------", 20, 20);
             doc.text("Comprobante de Deposito.", 20, 30);
             doc.text("-------------------------------------------------", 20, 40);
-            doc.text("Numero de cuenta del monto acreditado: "+250, 20 ,50);
+            doc.text("Numero de cuenta del monto acreditado: "+window.localStorage.getItem('monto'), 20 ,50);
             doc.text("Monto de la transacción: "+150, 20 ,60);
             break;
         case 2:
             doc.text("-------------------------------------------------", 20, 20);
             doc.text("Comprobante de Retiro.", 20, 30);
             doc.text("-------------------------------------------------", 20, 40);
-            doc.text("Numero de cuenta del monto retirado: "+250, 20 ,50);
+            doc.text("Numero de cuenta del monto retirado: -"+window.localStorage.getItem('monto'), 20 ,50);
+            doc.text("Saldo restante: "+window.localStorage.getItem('total'), 20 ,50);
             doc.text("Monto de la transacción: "+150, 20 ,60);
             break;
         case 3:
