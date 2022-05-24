@@ -1,3 +1,9 @@
+
+var total = 0;
+let data1 = "";
+let data2 = "";
+let data3 = "";
+
 function calcularFechaActual() {
     const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
@@ -7,9 +13,6 @@ function calcularFechaActual() {
     let anio = date.getFullYear();
     return dia + ' de ' + mes + ' de ' + anio;
 }
-
-var total = 0;
-// se puede sacar directo en historial con un OnLoad()...
 
 function agregar() {
 
@@ -22,6 +25,7 @@ function agregar() {
     //deacuerdo al orden que se guarde cada monto se guardara una descripcion que solo existira 
     //internamente, en el caso del modulo de Deposito sera 'Deposito'
     //monto tiene que ser una variable normal, hay que crear un array donde se guarde monto para usarla en historial y monto para sumarla con total
+    
     window.localStorage.setItem('monto', monto);
     window.localStorage.setItem('cuenta', cuenta);
 
@@ -58,20 +62,7 @@ function agregar() {
         console.log(montoArray);
         console.log(descripcionArray);
         console.log(fechaArray);
-        
     }
-/*
-    celda = document.createElement("td");
-    trTag = document.getElementById("trDatos");
-    var nodo1 = document.createTextNode("Deposito");
-    var nodo2 = document.createTextNode(calcularFechaActual());
-    var nodo3 = document.createTextNode(monto);
-    celda.appendChild(nodo1);
-    celda.appendChild(nodo2);
-    celda.appendChild(nodo3);
-    //DA problema debido a que el trDatos no esta en la pagina donde toy creando el nodo nuevo, F
-    window.localStorage.setItem('trTag', trTag.appendChild(celda));
-    */
 }
 
 function pagoFactura(factura) {
@@ -85,16 +76,12 @@ function pagoFactura(factura) {
 
     window.localStorage.setItem('monto', monto);
     window.localStorage.setItem('cuenta', cuenta);
-    
 
     total = window.localStorage.getItem('total');
 
     if(total != null && total >= monto) {
-        
         total = parseFloat(total) - monto;
-    
         window.localStorage.setItem('total', total);
-        
         montoArray = JSON.parse("[" + window.localStorage.getItem('montoArray') + "]");
         descripcionArray = [ window.localStorage.getItem('descripcionArray') ];
         fechaArray = [window.localStorage.getItem('fechaArray')];
@@ -103,7 +90,6 @@ function pagoFactura(factura) {
                 alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
         } else {
             montoArray.push(-1*monto);
-            
             switch(factura){
                 case 'anda':
                     descripcionArray.push('Pago ANDA');
@@ -125,8 +111,8 @@ function pagoFactura(factura) {
                     window.localStorage.setItem('proveedorTel', proveedorTel);
                     descripcionArray.push('Pago telefonía');
                 break;
-
             }
+            fechaArray.push(calcularFechaActual());
             window.localStorage.setItem('montoArray', montoArray);
             window.localStorage.setItem('descripcionArray', descripcionArray);
             window.localStorage.setItem('fechaArray', fechaArray);
@@ -137,7 +123,6 @@ function pagoFactura(factura) {
     } else {
         alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
     }
-
 }
 
 function retiro() {
@@ -169,6 +154,7 @@ function retiro() {
         } else {
             montoArray.push(-1*monto);
             descripcionArray.push('Retiro');
+            fechaArray.push(calcularFechaActual());
             window.localStorage.setItem('montoArray', montoArray);
             window.localStorage.setItem('descripcionArray', descripcionArray);
             window.localStorage.setItem('fechaArray', fechaArray);
@@ -179,5 +165,54 @@ function retiro() {
     } else {
         alert('No tiene suficientes fondos para hacer un retiro'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
     }
-
 }
+
+ function consultaSaldo() {
+     var total = window.localStorage.total;
+     if(total != undefined && total >= 0){
+        return document.getElementById("total").innerHTML = "$"+total
+     } else {
+        return document.getElementById("total").innerHTML = "$"+0.00
+     }
+    
+ }
+
+ function historial(){
+    var montoTemp = [];
+    var descripcionTemp = []; 
+    var fechaTemp = [];
+
+    var montoArray = [];
+    var descripcionArray = []; 
+    var fechaArray = [];
+
+    //cambio la forma de llamar los array dado que aunque tengan muchos datos siempre 
+    //seran un array con tamaño igual a uno, por lo que separo y guardo en un nuevo array
+    montoTemp = [ window.localStorage.getItem('montoArray') ];
+    descripcionTemp = [ window.localStorage.getItem('descripcionArray') ];
+    fechaTemp = [ window.localStorage.getItem('fechaArray') ];
+
+    montoArray = montoTemp[0].split(',');
+    descripcionArray = descripcionTemp[0].split(',');
+    fechaArray = fechaTemp[0].split(',');
+
+    descripcionArray.forEach(transaccionFuncion);
+    montoArray.forEach(montoFuncion);
+    fechaArray.forEach(fechaFuncion);
+    document.getElementById("monto").innerHTML = data1;
+    document.getElementById("tipoTransaccion").innerHTML = data2;
+    document.getElementById("fechaTran").innerHTML = data3;
+
+ }
+
+ function montoFuncion(value) {
+    data1 += value + "<br>"; 
+  }
+
+  function transaccionFuncion(value) {
+    data2 += value + "<br>"; 
+  }
+
+  function fechaFuncion(value) {
+    data3 += value + "<br>"; 
+  }
