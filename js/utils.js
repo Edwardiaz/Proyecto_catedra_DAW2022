@@ -226,7 +226,7 @@ function retiro() {
   }
 
   function transaccionFuncion(value) {
-    data2 += value + "<br>"; 
+    data2 += value + "<br>";
   }
 
   function fechaFuncion(value) {
