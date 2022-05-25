@@ -87,7 +87,11 @@ function pagoFactura(factura) {
         fechaArray = [window.localStorage.getItem('fechaArray')];
 
         if(montoArray[0] == null && montoArray.length == 1){
-                alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+            swal.fire({
+                icon: 'error',
+                title: 'Lo Sentimos',
+                text: 'No tiene suficientes fondos para efectuar el pago'
+            })    
         } else {
             montoArray.push(-1*monto);
             switch(factura){
@@ -121,7 +125,11 @@ function pagoFactura(factura) {
             console.log(fechaArray);
         }
     } else {
-        alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+        swal.fire({
+            icon: 'error',
+            title: 'Lo sentimos',
+            text: 'No tiene suficientes fondos para efectuar el pago'
+        })
     }
 }
 
@@ -150,7 +158,11 @@ function retiro() {
         fechaArray = [window.localStorage.getItem('fechaArray')];
 
         if(montoArray[0] == null && montoArray.length == 1){
-                alert('No tiene suficientes fondos para hacer un retiro'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+            swal.fire({
+                icon: 'error',
+                title: 'Lo sentimos',
+                text: 'No tiene suficientes fondos para hacer el retiro'
+            })
         } else {
             montoArray.push(-1*monto);
             descripcionArray.push('Retiro');
@@ -163,7 +175,11 @@ function retiro() {
             console.log(fechaArray);
         }
     } else {
-        alert('No tiene suficientes fondos para hacer un retiro'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+        swal.fire({
+            icon: 'error',
+            title: 'Lo Sentimos',
+            text: 'No tiene suficientes fondos para hacer un retiro'
+        })
     }
 }
 
