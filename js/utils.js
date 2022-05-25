@@ -1,3 +1,22 @@
+const CHART_COLORS = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+  };
+  
+  const NAMED_COLORS = [
+    CHART_COLORS.red,
+    CHART_COLORS.orange,
+    CHART_COLORS.yellow,
+    CHART_COLORS.green,
+    CHART_COLORS.blue,
+    CHART_COLORS.purple,
+    CHART_COLORS.grey,
+  ];
 
 var total = 0;
 let data1 = "";
@@ -87,7 +106,11 @@ function pagoFactura(factura) {
         fechaArray = [window.localStorage.getItem('fechaArray')];
 
         if(montoArray[0] == null && montoArray.length == 1){
-                alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+            swal.fire({
+                icon: 'error',
+                title: 'Lo Sentimos',
+                text: 'No tiene suficientes fondos para efectuar el pago'
+            })    
         } else {
             montoArray.push(-1*monto);
             switch(factura){
@@ -121,7 +144,11 @@ function pagoFactura(factura) {
             console.log(fechaArray);
         }
     } else {
-        alert('No tiene suficientes fondos para efectuar el pago'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+        swal.fire({
+            icon: 'error',
+            title: 'Lo sentimos',
+            text: 'No tiene suficientes fondos para efectuar el pago'
+        })
     }
 }
 
@@ -150,7 +177,11 @@ function retiro() {
         fechaArray = [window.localStorage.getItem('fechaArray')];
 
         if(montoArray[0] == null && montoArray.length == 1){
-                alert('No tiene suficientes fondos para hacer un retiro'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+            swal.fire({
+                icon: 'error',
+                title: 'Lo sentimos',
+                text: 'No tiene suficientes fondos para hacer el retiro'
+            })
         } else {
             montoArray.push(-1*monto);
             descripcionArray.push('Retiro');
@@ -163,7 +194,11 @@ function retiro() {
             console.log(fechaArray);
         }
     } else {
-        alert('No tiene suficientes fondos para hacer un retiro'); // AQUI TIENES QUE APLICAR LO DE LA LIBRERIA DE SWEETALERT Eduardo
+        swal.fire({
+            icon: 'error',
+            title: 'Lo Sentimos',
+            text: 'No tiene suficientes fondos para hacer un retiro'
+        })
     }
 }
 
@@ -210,9 +245,73 @@ function retiro() {
   }
 
   function transaccionFuncion(value) {
-    data2 += value + "<br>"; 
+    data2 += value + "<br>";
   }
 
   function fechaFuncion(value) {
     data3 += value + "<br>"; 
   }
+
+
+  function grafica() {
+
+    // Obtener una referencia al elemento canvas del DOM
+    const grafica = document.querySelector("#grafica");
+    // Las etiquetas son las que van en el eje X
+    const etiquetas = ["Deposito", "Retiro", "Pago de Servicios"];
+    
+    //Aqui conseguimos los arrays respectivos, y los separamos por comas para obtener un array con el tamaño correcto de acuardo a la cantidad de transacciones hechas
+    montoTemp = [window.localStorage.getItem('montoArray')];
+    descripcionTemp = [window.localStorage.getItem('descripcionArray')];
+
+    montoArray = montoTemp[0].split(',');
+    descripcionArray = descripcionTemp[0].split(',');
+
+    var contador;
+    var sumaDebito = 0, sumaRetiro = 0, sumaFacturas = 0;
+
+    for (contador = 0; contador < descripcionArray.length; contador++) {
+        if (descripcionArray[contador] == 'Deposito') {
+            sumaDebito = sumaDebito + parseFloat(montoArray[contador]);
+        } else if (descripcionArray[contador] == 'Retiro') {
+            //En la grafica dentro de data multiplica (-1*sumaRetiro) para tener valor positivo xd
+            sumaRetiro = sumaRetiro + parseFloat(montoArray[contador]);
+        } else {
+            sumaFacturas = sumaFacturas + parseFloat(montoArray[contador]);
+        }
+    }
+
+    // Podemos tener varios conjuntos de datos
+    const TrasnsaccionesRealizadas = {
+        label: "Montos en $",
+        data: [sumaDebito, -1*sumaRetiro, -1*sumaFacturas], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+        backgroundColor: Object.values(CHART_COLORS), // Color de fondo
+        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+        borderWidth: 1,// Ancho del borde
+    };
+
+    new Chart(grafica, {
+        type: 'doughnut',// Tipo de gráfica
+        data: {
+            labels: etiquetas,
+            datasets: [
+                TrasnsaccionesRealizadas,
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+            },
+            title: {
+                display: true,
+                text: 'Grafica de transacciones'
+            }
+        }
+    });
+    
+}
