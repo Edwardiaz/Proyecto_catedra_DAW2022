@@ -33,6 +33,23 @@ function calcularFechaActual() {
     return dia + ' de ' + mes + ' de ' + anio;
 }
 
+function dineroInicial() {
+    var montoArray = [];
+    var fechaArray = [];
+    var descripcionArray = [];
+    total = window.localStorage.getItem('total');
+    montoArray = [ window.localStorage.getItem('montoArray') ];
+
+    if(total == null && montoArray.length[0] == null) {
+        descripcionArray[0] = 'Deposito';
+        fechaArray[0] = calcularFechaActual();
+        window.localStorage.setItem('montoArray', 500);
+        window.localStorage.setItem('descripcionArray', 'Deposito');
+        window.localStorage.setItem('fechaArray', fechaArray);
+        window.localStorage.setItem('total', 500);
+    }
+}
+
 function agregar() {
 
     var montoString = document.getElementById("monto").value;
